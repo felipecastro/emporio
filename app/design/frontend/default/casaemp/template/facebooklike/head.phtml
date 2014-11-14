@@ -1,0 +1,10 @@
+<?php $product = Mage::registry('current_product'); ?>
+<?php if ($product): ?>
+<meta property="fb:app_id" content="<?php echo Mage::getStoreConfig('facebooklike_options/all_settings/fbappid'); ?>"/>
+<meta property="og:title" content="<?php echo trim($product->getName()); ?>"/>
+<meta property="og:url" content="<?php echo $this->helper('core/url')->getCurrentUrl();?>"/>
+<meta property="og:type" content="product"/>
+<meta property="og:image" content="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(130, 110); ?>" />
+<?php endif; ?> 
+
+

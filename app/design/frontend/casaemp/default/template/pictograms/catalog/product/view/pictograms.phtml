@@ -1,0 +1,8 @@
+<?php if ($this->getPictogramsHtml()) { ?>
+<div class="pictograms-product-mainDiv">
+	<?php foreach ($this->getPictogramsHtml() as $data){ ?>
+		<span><img src="<?php echo $data['url']; ?>" title="<?php echo $data['alt']; ?>" alt="<?php echo $data['alt']; ?>" /></span>
+	<?php } ?>
+</div>
+<div class="pictograms-clear"></div>
+<?php } ?>

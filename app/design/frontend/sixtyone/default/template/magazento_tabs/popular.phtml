@@ -1,0 +1,26 @@
+<?php
+/**
+ * 
+ * @category  design
+ * @package   sixtyone_default
+ * @author    Ivan Proskuryakov http://www.magazento.com <volgodark@gmail.com>
+ * @copyright Copyright (C)2013 Magazento
+ */
+?>
+<?php $_currency =  Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol(); ?>
+<?php $_productCollection = $this->getProductCollection(); ?>
+<?php $_helper = $this->helper('catalog/output');
+?>
+<?php if(!$_productCollection->count()): ?>
+	<?php echo $this->__('Nenhum produto corresponde aos filtros selecionados.') ?>
+<?php else: ?>
+	<?php foreach ($_productCollection as $_product) { ?>
+	
+		<ul class="pop_item">
+			<li class="image"><a title="<?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?>" href="<?php echo $_product->getProductUrl() ?>"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(200, 200); ?>" alt="<?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?>" width="200" height="200" /></a></li>
+			<li class="title"><a title="<?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?>" href="<?php echo $_product->getProductUrl() ?>"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></a></li>
+			<li class="price"><a title="<?php echo $_currency; ?><?php echo number_format($_product->getFinalPrice(),2); ?>" href="<?php echo $_product->getProductUrl() ?>">Por <?php echo $_currency; ?><?php echo number_format($_product->getFinalPrice(),2); ?></a></li>
+		</ul>
+		
+	<?php } ?>
+<?php endif;?>
